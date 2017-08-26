@@ -46,3 +46,43 @@
     width: 70%;
     height: 70%;
 }
+.success-tip .content {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin-left: -75px;
+    margin-top: -50px;
+    width: 150px;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    background-color: #fff;
+    z-index: 2;
+}
+.success-tip .content > div {
+    display: inline-block;
+    line-height: 1.5em;
+    vertical-align: middle;
+}
+.success-tip .shade {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, .6);
+    z-index: 1;
+}
+.sidebar {
+    width: 750px;
+    margin: 0 auto;
+    text-align: left;
+    overflow: hidden;
+}
+.sidebar > span {
+    float: left;
+}
+.sidebar > a {
+    float: right;
+}

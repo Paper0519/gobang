@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 class Chess extends React.Component {
     constructor() {
@@ -24,5 +24,13 @@ class Chess extends React.Component {
             );
     }  
 }
+
+Chess.propTypes = {
+    x: PropTypes.number.isRequired,
+    y: PropTypes.number.isRequired,
+    user: PropTypes.string.isRequired,
+    is_win: PropTypes.bool.isRequired,
+    onChoose: PropTypes.func.isRequired
+};
 
 export default Chess;

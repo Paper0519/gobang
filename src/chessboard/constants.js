@@ -10,7 +10,7 @@ const USERS_MAP = {
 
 const BOARD_SIZE = [15, 15];
 
-const CHESSBOARD = (() => {
+const getChessboard = () => {
     let chessboard = [];
     const [x_num, y_num] = BOARD_SIZE;
     for (let x = 0; x < x_num; x++) {
@@ -21,11 +21,12 @@ const CHESSBOARD = (() => {
         chessboard.push(chessboard_x);
     }
     return chessboard;
-})();
+};
+
 
 export {
     USERS_TYPE,
     USERS_MAP,
     BOARD_SIZE,
-    CHESSBOARD
+    getChessboard
 };

@@ -2,7 +2,7 @@ import React from 'react';
 import Chess from '../chess';
 import './index.css';
 
-import { USERS_TYPE, USERS_MAP, BOARD_SIZE, CHESSBOARD } from './constants';
+import { USERS_TYPE, USERS_MAP, BOARD_SIZE, getChessboard } from './constants';
 
 const checkWinner = (x, y, winners) => {
     return winners.some(([w_x, w_y]) => w_x === x && w_y === y);
@@ -35,18 +35,20 @@ const getWinnerPointers = (pointer, user, chessboard) => {
     return is_win ? pointers : [];
 };
 
-const INIT_STATE = {
-    chessboard: CHESSBOARD,
+const getInit = () => ({
+    chessboard: getChessboard(),
     result: [],
     winner_pointers: [],
     current_user: USERS_TYPE.BLACK
-};
+});
 
 class ChessBoard extends React.Component {
     constructor() {
         super();
         this.onChoose = this.onChoose.bind(this);
-        this.state = INIT_STATE;
+        this.back = this.back.bind(this);
+        this.reset = this.reset.bind(this);
+        this.state = getInit();
     }
 
     onChoose(x, y) {
@@ -70,6 +72,24 @@ class ChessBoard extends React.Component {
         return current_user === USERS_TYPE.BLACK ? USERS_TYPE.WHITE : USERS_TYPE.BLACK;
     }
 
+    back() {
+        const { result, chessboard } = this.state;
+        const current_user = this.toggleUser();
+        const prev_pointer = result.pop();
+        const [x, y] = prev_pointer;
+        chessboard[x][y] = '';
+        this.setState({
+            current_user,
+            result,
+            chessboard
+        });
+    }
+
+    reset() {
+        console.log(getInit());
+        this.setState(getInit());
+    }
+
     renderChess() {
         const { winner_pointers } = this.state;
         return this.state.chessboard.map((chess_x, x) => (
@@ -86,8 +106,37 @@ class ChessBoard extends React.Component {
     }
 
     render() {
+        const { current_user, winner_pointers, result } = this.state;
+        const is_over = winner_pointers.length === 5;
+
         return (
             <div>
+                {
+                    is_over ?
+                        <div className="success-tip">
+                            <div className="shade" />
+                            <div className="content">
+                                <div>    
+                                    赢家是{USERS_MAP[this.toggleUser()]}✌️<br/>
+                                    <a href="javascript:;" onClick={this.reset}>重新再战💪</a>
+                                </div>    
+                            </div>
+                        </div>
+                        :
+                        null
+                }
+                {
+                    is_over ?
+                        null
+                        :
+                        <div className="sidebar">
+                            <span>请{USERS_MAP[current_user]}下棋</span>
+                            {
+                                result.length ?
+                                    <a href="javascript:;" onClick={ this.back }>悔棋</a> : null
+                            }
+                        </div>
+                }
                 <ul className="chessboard">    
                     {
                         this.renderChess()
@@ -96,7 +145,6 @@ class ChessBoard extends React.Component {
             </div>
         );
     }
-
 }
 
 export default ChessBoard;
