@@ -1,0 +1,26 @@
+.chessboard li {
+    cursor: pointer;
+}
+
+.chessboard li:before {
+    display: inline-block;
+    content: '';
+    width: 60%;
+    height: 60%;
+    border-radius: 50%;
+    vertical-align: middle;
+    transition: width .5s, height .5s;
+}
+
+.chessboard .black:before {
+    background-color: #000;
+}
+
+.chessboard .white:before {
+    background-color: #fff;
+}
+
+.chessboard .win:before {
+    width: 70%;
+    height: 70%;
+}

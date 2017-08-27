@@ -1,0 +1,29 @@
+.chessboard-wrap {
+    width: 750px;
+    height: 750px;
+    margin: 0 auto;
+    position: relative;
+    background-color: transparent;
+}
+
+.chessboard-wrap > ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    list-style: none;
+}
+.chessboard {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+
+.chessboard-wrap li{
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+}
