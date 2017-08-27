@@ -1,0 +1,13 @@
+.sidebar {
+    width: 700px;
+    padding: 0 25px;
+    margin: 0 auto;
+    text-align: left;
+    overflow: hidden;
+}
+.sidebar > span {
+    float: left;
+}
+.sidebar > a {
+    float: right;
+}

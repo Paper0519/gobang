@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import './index.css'
 
 class Chess extends React.Component {
     constructor() {
