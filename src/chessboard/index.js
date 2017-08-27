@@ -105,6 +105,20 @@ class ChessBoard extends React.Component {
         ));
     }
 
+    renderBoard() {
+        const [x, y] = BOARD_SIZE;
+        let chess = [];
+        for (let i = 0; i < x; i++) {
+            for (let j = 0; j < y; j++) {
+                chess.push(
+                    <li
+                        key={`square-${i}-${j}`}/>
+                )
+            }
+        }
+        return chess;
+    }
+
     render() {
         const { current_user, winner_pointers, result } = this.state;
         const is_over = winner_pointers.length === 5;
@@ -137,11 +151,18 @@ class ChessBoard extends React.Component {
                             }
                         </div>
                 }
-                <ul className="chessboard">    
-                    {
-                        this.renderChess()
-                    }
-                </ul>    
+                <div className="chessboard-wrap">
+                    <ul className="chessboard">    
+                        {
+                            this.renderChess()
+                        }
+                    </ul>
+                    <ul className="real-chessboard">    
+                        {
+                            this.renderBoard()
+                        }
+                        </ul>
+                </div>    
             </div>
         );
     }

@@ -4,3 +4,7 @@ body, ul, li {
   font-family: sans-serif;
   box-sizing: border-box;
 }
+
+body {
+  background-color: #ccc;
+}
