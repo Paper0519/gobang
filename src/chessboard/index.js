@@ -108,8 +108,8 @@ class ChessBoard extends React.Component {
     renderBoard() {
         const [x, y] = BOARD_SIZE;
         let chess = [];
-        for (let i = 0; i < x; i++) {
-            for (let j = 0; j < y; j++) {
+        for (let i = 0; i < x - 1; i++) {
+            for (let j = 0; j < y - 1; j++) {
                 chess.push(
                     <li
                         key={`square-${i}-${j}`}/>
