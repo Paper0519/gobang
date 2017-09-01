@@ -1,5 +1,19 @@
 import React, { PropTypes } from 'react';
-import './index.css'
+import styled from 'styled-components';
+
+const Li = styled.li`
+    cursor: pointer;
+    &:before {
+        display: inline-block;
+        content: '';
+        width: ${({ is_win }) => is_win ? '70%' : '60%' };
+        height: 60%;
+        border-radius: 50%;
+        vertical-align: middle;
+        transition: width .5s, height .5s;
+        background-color: ${({ user }) => user}
+    }
+`;
 
 class Chess extends React.Component {
     constructor() {
@@ -17,10 +31,11 @@ class Chess extends React.Component {
     render() {
         const { x, y, is_win, user } = this.props;
         return (
-            <li
+            <Li
                 data-x={ x }
-                data-y={ y }
-                className={ `${ user }${ is_win ? ' win' : ''  }` }
+                data-y={y}
+                is_win={is_win}
+                user={ user }
                 onClick={ this.onChoose } />
             );
     }  
