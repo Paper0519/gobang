@@ -1,4 +1,6 @@
-import React, { PropTypes } from 'react';
+//@flow
+
+import React from 'react';
 import styled from 'styled-components';
 
 const Shade = styled.div`
@@ -30,7 +32,12 @@ const Article = styled.article`
     vertical-align: middle;
 `;
 
-const SuccessTip = ({ show, children }) => {
+type Props = {
+    show: boolean,
+    children: React.DOM
+}
+
+const SuccessTip = ({ show, children }: Props) => {
     if (!show) {
         return null;
     }
@@ -44,10 +51,6 @@ const SuccessTip = ({ show, children }) => {
             </Content>
         </div>
     );
-};
-
-SuccessTip.propTypes = {
-    show: PropTypes.bool.isRequired
 };
 
 export default SuccessTip;

@@ -1,8 +1,14 @@
 [ignore]
+.*/mode_modules/flow-bin
+.*/mode_modules/react
+.*/mode_modules/react-dom
+.*/mode_modules/react-scripts
+.*/mode_modules/styled-components
 
 [include]
-./src/*.js
+<PROJECT_ROOT>/src/*.js
 
 [libs]
+.*/node_modules/styled-components/flow-typed/.*
 
 [options]

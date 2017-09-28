@@ -1,4 +1,6 @@
-import React, { PropTypes } from 'react';
+//@flow
+
+import React from 'react';
 import { USERS_MAP } from '../app/constants';
 
 import styled from 'styled-components';
@@ -19,7 +21,14 @@ const Link = styled.a`
     float: right;
 `;
 
-const Sidebar = ({ show, current_user, back, can_back }) => {
+type Props = {
+    show: boolean,
+    can_back: boolean,
+    current_user: string,
+    back: Function
+};
+
+const Sidebar = ({ show, current_user, back, can_back }: Props) => {
     if (!show) {
         return null;
     }
@@ -32,13 +41,6 @@ const Sidebar = ({ show, current_user, back, can_back }) => {
             }
         </DIV>
     );
-};
-
-Sidebar.propTypes = {
-    show: PropTypes.bool.isRequired,
-    can_back: PropTypes.bool.isRequired,
-    current_user: PropTypes.string.isRequired,
-    back: PropTypes.func.isRequired
 };
 
 export default Sidebar;

@@ -1,4 +1,6 @@
-import React, { PropTypes } from 'react';
+//@flow
+
+import React from 'react';
 import styled from 'styled-components';
 
 const Li = styled.li`
@@ -15,17 +17,28 @@ const Li = styled.li`
     }
 `;
 
-class Chess extends React.Component {
+type Props = {
+    x: number,
+    y: number,
+    user: string,
+    is_win: boolean,
+    onChoose: Function
+};
+
+type State = {
+    
+}
+
+class Chess extends React.Component<Props, State> {
     constructor() {
         super();
-        this.onChoose = this.onChoose.bind(this);
         this.state = {};
     }
-    onChoose(e) {
+    onChoose(e: SyntheticEvent<HTMLButtonElement>) {
         if (this.props.user) {
             return false;
         }
-        const { x, y } = e.target.dataset;
+        const { x, y } = e.currentTarget.dataset;
         this.props.onChoose(Number(x), Number(y));
     }
     render() {
@@ -40,13 +53,5 @@ class Chess extends React.Component {
             );
     }  
 }
-
-Chess.propTypes = {
-    x: PropTypes.number.isRequired,
-    y: PropTypes.number.isRequired,
-    user: PropTypes.string.isRequired,
-    is_win: PropTypes.bool.isRequired,
-    onChoose: PropTypes.func.isRequired
-};
 
 export default Chess;
