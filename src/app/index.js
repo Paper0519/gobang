@@ -93,7 +93,7 @@ class ChessBoard extends React.Component {
                     show={!is_over}
                     current_user={ current_user }
                     back={ this.back }
-                    can_back={ result.length }/>
+                    can_back={ Boolean(result.length) }/>
                 <div className="chessboard-wrap">
                     <ul className="chessboard">    
                         {
